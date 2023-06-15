@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Life Visualizer</title>
+</head>
+<body>
+<h1>Life Visualizer</h1>
+<p class="intro">Aaaaah, life! What a wonderful thing to live! But it can sometimes be complicated to visualize it, busy as we are with our everyday tasks. On this page, you'll find some information and visualization of your life. The goal? Make you see life from a different data viewpoint so that you can see how precious every day is!</p>
+<div class="birthdate-input">
+    <form action="index.html" class="main-form">
+        <div class="form__item">
+            <label for="birthdate">What is your birthdate?</label>
+            <input type="date" name="birthdate" id="birthdate">
+        </div>
+        <div class="form__item">
+            <label for="gender">You are a</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="form__item">
+            <label for="country">Where do you live</label>
+            <select id="country" name="country"></select>
+        </div>
+        <button class="form__button" id="form__button" type="submit">Visualize your life !</button>
+    </form>
+</div>
+<div class="results">
+<div class="general-info">
+    <div class="life">
+        <h2>Your life</h2>
+        <p>You are <span id="life__age-years"></span> years <span id="life__age-months"></span> months and <span id="life__age-days"></span> days old.</p>
+        <!-- <p>Your last birthday was <span id="life__lastbirthday"></span> ago and your next birthday is in <span id="life__nextbirthday"></span></p> -->
+    </div>
+    <div class="death">
+        <h2>Your death</h2>
+        <p>Your life expectancy in <span id="death__country"></span> is <span id="death__expectancy"></span> years old.</p>
+        <p>Your estimated death would be <span id="death__deathday"></span>.
+        <p>This means you should have <span id="death__timeleft-years"></span> years <span id="death__timeleft-months"></span> months and <span id="death__timeleft-days"></span> days left to live. Enjoy every second!</p>
+    </div>
+</div>
+<div class="visualization">
+    <h2>Here is your life visualized !</h2>
+    <div class="visualization__caption">
+        <div class="caption-item"></div>
+        <div class="caption-item"></div>
+        <div class="caption-item"></div>
+    </div>
+    <div class="visualizer"></div>
+</div>
+</div>
+
+<script src="./js/countries.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.8/plugin/relativeTime.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.8/plugin/updateLocale.js" defer></script>
+<script src="./js/app.js" defer></script>
+
+</body>
+</html>

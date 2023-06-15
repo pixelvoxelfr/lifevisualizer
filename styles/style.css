@@ -1,0 +1,38 @@
+html {
+
+}
+
+body {
+
+}
+
+.results {
+    padding: 2rem 5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.visualizer {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+.visualizer__item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: orange;
+}
+
+.visualizer__item--lived {
+    background-color: black;
+}
+
+.visualizer__item--today {
+    background-color: yellow;
+}
+
+.visualizer__item--tolive {
+    background-color: green;
+}
