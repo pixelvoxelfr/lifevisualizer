@@ -1,15 +1,143 @@
-html {
+:root {
+    --yellow: #FFBF00;
+    --green: #7AE7C7;
+    --blue: #2274A5;
+    --orange: #EB6534;
+    --darkpurple: #1D1E2C;
+}
+/* https://coolors.co/ffbf00-7ae7c7-2274a5-eb6534-1d1e2c */
 
+html {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 body {
+    height: 100vh;
+    margin: 0;
+    padding: 2rem;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(black 5%, var(--darkpurple));
+    color: white;
+    font-size: 1rem;
+}
 
+.wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Karantina', cursive;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding-bottom: 0.3em;
+    padding-top: 0.5em
+    
+}
+
+h1 {
+    font-size: 8rem;
+    text-shadow: var(--blue) 0.03em 0.03em, var(--orange) 0.06em 0.06em;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+p {
+    line-height: 1.2;
+}
+
+.birthdate-input {
+    padding: 0 2rem;
+    font-size: 1.2rem;
+}
+
+.intro {
+    padding: 2rem 4rem;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+.main-form {
+    padding: 0 2rem;
+}
+
+.form__items {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+input, select {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    decoration: none;
+}
+
+.form__button {
+    padding: 1rem;
+    background: var(--blue);
+    color: white;
+    font-family: 'Karantina', cursive;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+    transition: all 200ms;
+}
+
+.form__button:hover {
+    background: white;
+    color: var(--darkpurple);
+    text-shadow: var(--blue) 0.03em 0.03em, var(--orange) 0.06em 0.06em;
+}
+
+.form__button:active {
+    color: black;
+    text-shadow: none;
+    background-color: var(--yellow);
+    box-shadow: inset white 0 0 1rem 0.2rem, white 0 0 3rem;
+}
+
+.life h2 {
+    text-shadow: var(--blue) 0.05em 0.05em;
+}
+
+.life span {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-shadow: var(--blue) 0.05em 0.05em;
+}
+
+.death h2 {
+    text-shadow: var(--orange) 0.05em 0.05em;
+}
+
+.death span {
+    font-size: 1.2em;
+    font-weight: 600
 }
 
 .results {
-    padding: 2rem 5rem;
-    display: flex;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
     gap: 2rem;
+}
+
+.results > * {
+    padding: 1rem 2rem;
+    background: rgba(0,0,0,0.3);
 }
 
 .visualizer {
@@ -26,13 +154,13 @@ body {
 }
 
 .visualizer__item--lived {
-    background-color: black;
+    background-color: var(--blue);
 }
 
 .visualizer__item--today {
-    background-color: yellow;
+    background-color: var(--yellow);
 }
 
 .visualizer__item--tolive {
-    background-color: green;
+    background-color: var(--green);
 }
