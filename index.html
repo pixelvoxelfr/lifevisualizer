@@ -38,7 +38,7 @@
         <center><button class="form__button" id="form__button" type="submit">Visualize your life !</button></center>
     </form>
 </div>
-<div class="results">
+<div class="results hidden">
 <div class="general-info">
     <div class="life">
         <h2>Your life</h2>
@@ -54,12 +54,16 @@
 </div>
 <div class="visualization">
     <h2>Here is your life visualized !</h2>
-    <div class="visualization__caption">
-        <div class="caption-item"></div>
-        <div class="caption-item"></div>
-        <div class="caption-item"></div>
+    <div class="visualization__buttons">
+        <span class="button-years">YEARS</span><span class="button-months">MONTHS</span><span class="button-days">DAYS</span>
     </div>
-    <div class="visualizer"></div>
+    <div class="visualization__caption">
+        <div class="caption-lived">Years you've lived</div>
+        <div class="caption-today">This year!</div>
+        <div class="caption-tolive">Years you've left to live</div>
+    </div>
+    <div class="visualization__scale">One row is 10 years</div>
+    <div id="visualizer" class="visualizer--years"></div>
 </div>
 </div>
 

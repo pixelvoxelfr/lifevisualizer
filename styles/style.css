@@ -19,6 +19,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background: linear-gradient(black 5%, var(--darkpurple));
+    background-attachment: fixed;
     color: white;
     font-size: 1rem;
 }
@@ -131,7 +132,7 @@ input, select {
 .results {
     padding: 2rem;
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 3fr;
     gap: 2rem;
 }
 
@@ -140,15 +141,113 @@ input, select {
     background: rgba(0,0,0,0.3);
 }
 
-.visualizer {
+.visualization__buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-years, .button-months, .button-days {
+    padding: 1rem;
+    background-color: var(--blue);
+    color: white;
+    font-family: 'Karantina', cursive;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.button-years:hover, .button-months:hover, .button-days:hover {
+    background: white;
+    color: var(--darkpurple);
+    text-shadow: var(--blue) 0.03em 0.03em, var(--orange) 0.06em 0.06em;
+}
+
+.button-active {
+    padding: 1rem;
+    font-family: 'Karantina', cursive;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    background: white;
+    color: var(--darkpurple);
+    text-shadow: var(--blue) 0.03em 0.03em, var(--orange) 0.06em 0.06em;
+}
+
+.visualization__caption {
+    font-size: 1.2rem;
+    padding: 0.5rem;
     display: flex;
     flex-flow: row wrap;
-    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.caption-lived::before {
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--orange);
+    border-radius: 50%;
+    border: white 2px solid;
+}
+
+.caption-today::before {
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--yellow);
+    border-radius: 50%;
+    border: white 2px solid;
+}
+
+.caption-tolive::before {
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--blue);
+    border-radius: 50%;
+    border: white 2px solid;
+}
+
+.visualization__scale {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+
+#visualizer {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.visualizer--years {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(10, 50px);
+    gap: 2px;
+}
+
+.visualizer--months {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(12, 20px);
+    gap: 2px;
+}
+
+.visualizer--days {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(100, 5px);
+    gap: 2px;
 }
 
 .visualizer__item {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: orange;
 }
@@ -163,4 +262,8 @@ input, select {
 
 .visualizer__item--tolive {
     background-color: var(--green);
+}
+
+.hidden {
+    display: none;
 }

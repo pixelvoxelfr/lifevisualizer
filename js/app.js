@@ -59,22 +59,152 @@ dataSending = () => {
         user.timeleft[0] = dayjs(user.deathday).diff(today, 'years');
         user.timeleft[1] = Math.floor((dayjs(user.deathday).diff(today, 'years', true) - user.timeleft[0]) * 12);
         user.timeleft[2] = Math.floor(((dayjs(user.deathday).diff(today, 'years', true) - user.timeleft[0]) * 12 - user.timeleft[1]) * 30);
-
+        if (!user.birthdate) {
+            console.log("Nope");
+        } else {
+        document.querySelector(".results").classList.remove("hidden");
         replacingData();
+        creatingDivs.years();
         visualizerSetup();
+        }
     })
 }
 
-visualizerSetup = () => {
-    const visualizer = document.querySelector(".visualizer");
-    const monthsLived = today.diff(dayjs(user.birthdate), 'months') - 1;
-    const monthsToLive = today.diff(dayjs(user.deathday), 'months');
+const visualizer = document.querySelector("#visualizer");
+const visualizationButtons = document.querySelector(".visualization__buttons");
+const yearsButton = document.querySelector(".button-years");
+const monthsButton = document.querySelector(".button-months");
+const daysButton = document.querySelector(".button-days");
+const livedCaption = document.querySelector(".caption-lived");
+const todayCaption = document.querySelector(".caption-today");
+const toliveCaption = document.querySelector(".caption-tolive");
+const scaleCaption = document.querySelector(".visualization__scale");
 
-    for(let i = 0; i < monthsLived; i++) {
-        console.log("une div");
+visualizerSetup = () => {
+    visualizationButtons.addEventListener('click', (event) => {
+        switch (event.target) {
+            case yearsButton:
+                creatingDivs.years();
+                break;
+            case monthsButton:
+                creatingDivs.months();
+                break;
+            case daysButton:
+                creatingDivs.days();
+                break;
+        }
+    })
+}
+
+const creatingDivs = {
+    years:() => {
+        // Changing the classes of the buttons
+        yearsButton.className = "button-active";
+        monthsButton.className = "button-months";
+        daysButton.className = "button-days";
+        // Renaming the captions
+        livedCaption.textContent = "Years you've lived";
+        todayCaption.textContent = "This year!";
+        toliveCaption.textContent = "Years you've left to live";
+        scaleCaption.textContent = "One row is 10 years";
+        const yearsLived = today.diff(dayjs(user.birthdate), 'years') - 1;
+        const yearsToLive = Math.abs(today.diff(dayjs(user.deathday), 'years'));
+        visualizer.textContent="";
+
+        for(let i = 0; i < yearsLived; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--lived");
+            visualizer.appendChild(item);
+        }
+        creatingDivs.today();
+
+        for(let i = 0; i < yearsToLive; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--tolive");
+            visualizer.appendChild(item);
+        }
+
+        visualizer.className = "visualizer--years";
+        const allDivs = visualizer.querySelectorAll(".visualizer__item")
+        allDivs.forEach(div => {
+            div.style.width = "50px";
+            div.style.height = "50px";
+        })
+    },
+    months:() => {
+        yearsButton.className = "button-years";
+        monthsButton.className = "button-active";
+        daysButton.className = "button-days";
+
+        livedCaption.textContent = "Months you've lived";
+        todayCaption.textContent = "This month!";
+        toliveCaption.textContent = "Months you've left to live";
+        scaleCaption.textContent = "One row is 12 months so a full year";
+        const monthsLived = today.diff(dayjs(user.birthdate), 'months') - 1;
+        const monthsToLive = Math.abs(today.diff(dayjs(user.deathday), 'months'));
+        visualizer.textContent="";
+
+        for(let i = 0; i < monthsLived; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--lived");
+            visualizer.appendChild(item);
+        }
+        creatingDivs.today();
+
+        for(let i = 0; i < monthsToLive; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--tolive");
+            visualizer.appendChild(item);
+        }
+        visualizer.className = "visualizer--months";
+        const allDivs = visualizer.querySelectorAll(".visualizer__item")
+        allDivs.forEach(div => {
+            div.style.width = "20px";
+            div.style.height = "20px";
+        })
+    },
+    days:() => {
+        yearsButton.className = "button-years";
+        monthsButton.className = "button-months";
+        daysButton.className = "button-active";
+
+        livedCaption.textContent = "Days you've lived";
+        todayCaption.textContent = "Today!";
+        toliveCaption.textContent = "Days you've left to live";
+        scaleCaption.textContent = "One row is 100 days";
+        const daysLived = today.diff(dayjs(user.birthdate), 'days') - 1;
+        const daysToLive = Math.abs(today.diff(dayjs(user.deathday), 'days'));
+        visualizer.textContent="";
+
+        for(let i = 0; i < daysLived; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--lived");
+            visualizer.appendChild(item);
+        }
+        creatingDivs.today();
+
+        for(let i = 0; i < daysToLive; i++) {
+            const item = document.createElement("div");
+            item.classList.add("visualizer__item");
+            item.classList.add("visualizer__item--tolive");
+            visualizer.appendChild(item);
+        }
+        visualizer.className = "visualizer--days";
+        const allDivs = visualizer.querySelectorAll(".visualizer__item")
+        allDivs.forEach(div => {
+            div.style.width = "5px";
+            div.style.height = "5px";
+        })
+    },
+    today:() => {
         const item = document.createElement("div");
         item.classList.add("visualizer__item");
-        item.classList.add("visualizer__item--lived");
+        item.classList.add("visualizer__item--today");
         visualizer.appendChild(item);
     }
 }
