@@ -253,7 +253,7 @@ input, select {
 }
 
 .visualizer__item--lived {
-    background-color: var(--blue);
+    background-color: var(--orange);
 }
 
 .visualizer__item--today {
@@ -261,7 +261,7 @@ input, select {
 }
 
 .visualizer__item--tolive {
-    background-color: var(--green);
+    background-color: var(--blue);
 }
 
 .hidden {
